@@ -25,13 +25,12 @@ def download_task(playlist, destination):
     txt_file = str(err).split(' ')[-1][0:-3]  # txt file to download and delete
     rc = p.returncode
 
-    p = Popen(['spotdl', '--list', txt_file, '-f', '/root/Music/'+destination], stdin=PIPE, stdout=PIPE, stderr=PIPE)
-    output1, err1 = p.communicate(b"input data that is passed to subprocess' stdin")
-    output += output1
-    err += err1
+    # p = Popen(['spotdl', '--list', txt_file, '-f', '/root/Music/'+destination], stdin=PIPE, stdout=PIPE, stderr=PIPE)
+    # output1, err1 = p.communicate(b"input data that is passed to subprocess' stdin")
+    # output += output1
+    # err += err1
 
-    # p = call(['spotdl', '-l', txt_file, '-f', destination])
-
+    call(['spotdl', '-l', txt_file, '-f', destination])
     call(['rm', txt_file], shell=True)
 
     ready = True
