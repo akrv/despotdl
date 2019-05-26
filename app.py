@@ -26,11 +26,18 @@ def download_task(playlist, destination):
     rc = p.returncode
 
     p = Popen(['spotdl', '--list', txt_file, '-f', '/root/Music/'+destination], stdin=PIPE, stdout=PIPE, stderr=PIPE)
-    output, err = p.communicate(b"input data that is passed to subprocess' stdin")
-    p = call(['spotdl', '-l', txt_file, '-f', destination])
+    output1, err1 = p.communicate(b"input data that is passed to subprocess' stdin")
+    output += output1
+    err += err1
+
+    # p = call(['spotdl', '-l', txt_file, '-f', destination])
+
     call(['rm', txt_file], shell=True)
 
     ready = True
+    output = ""
+    err = ""
+
 
 @ app.route('/', methods=['GET', 'POST'])
 def index():
