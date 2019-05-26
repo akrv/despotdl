@@ -50,10 +50,13 @@ def start_download():
     if request.method == 'GET':
         return redirect(url_for('index'))
     if request.method == 'POST':
-        x = threading.Thread(target=download_task,
-                             args=[request.form.get('playlist'), request.form.get('destination')])
-        x.start()
-        return render_template('app.html', message='POST')
+        if ready:
+            x = threading.Thread(target=download_task,
+                                 args=[request.form.get('playlist'), request.form.get('destination')])
+            x.start()
+            return render_template('app.html', message='POST')
+        else:
+            return redirect(url_for('index'))
 
 
 if __name__ == '__main__':
