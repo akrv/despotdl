@@ -30,7 +30,7 @@ def download_task(playlist, destination):
     # output += output1
     # err += err1
 
-    call(['spotdl', '-l', txt_file, '-f', '/root/Music/'+destination], shell=True)
+    call(['spotdl -l ' + txt_file+ ' -f ' + '/root/Music/'+destination], shell=True)
 
     #call(['rm '+txt_file], shell=True)
 
