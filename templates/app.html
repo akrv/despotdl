@@ -28,15 +28,7 @@
 
             </form>
         {% else %}
-            <p>Still downloading</p>
-            {% if err %}
-                <p>{{ output }}</p>
-            {% endif %}
-
-            {% if err %}
-                <p>{{ err }}</p>
-            {% endif %}
-
+            <p>It is possible the server is busy</p>
         {% endif %}
 
     </div>
